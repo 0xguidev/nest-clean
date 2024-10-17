@@ -22,3 +22,9 @@ Content-Type: application/json
     "email": "example@example.com.br",
     "password": "umasenhamuitoforte"
 }
+
+###
+
+# @name question
+POST {{baseurl}}/questions
+Content-Type: application/json
