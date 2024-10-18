@@ -32,6 +32,13 @@ Content-Type: application/json
 Authorization: Bearer {{authToken}}
 
 {
-    "title": "nova pergunta",
+    "title": "nova pergunta 2",
     "content": "Conteudo da pergunta"
 }
+
+###
+
+# @name fetch-recent-question
+GET {{baseurl}}/questions
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
