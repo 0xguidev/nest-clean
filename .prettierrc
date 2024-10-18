@@ -1,0 +1,22 @@
+{
+    "singleQuote": false,
+    "trailingComma": "all",
+    "printWidth": 80,
+    "arrowParens": "always",
+    "bracketSpacing": true,
+    "commaDangle": "never",
+    "commaSpacing": "always",
+    "endOfLine": "lf",
+    "funcCallSpacing": "always",
+    "indentWidth": 2,
+    "keySpacing": "always",
+    "linebreakStyle": "windows",
+    "objectCurlySpacing": "always",
+    "quoteProps": "as-needed",
+    "semi": false,
+    "spaceBeforeFunctionParen": "always",
+    "spaceInParens": "always",
+    "tabWidth": 2,
+    "trailingSpaces": "trim",
+    "wordWrap": "never"
+  }
