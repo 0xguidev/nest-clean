@@ -5,12 +5,12 @@ import {
   HttpCode,
   Post,
   UsePipes,
-} from "@nestjs/common"
-import { hash } from "bcryptjs"
-import { ERROR_MESSAGES } from "constants/error-message.constants"
-import { ZodValidationPipe } from "src/pipes/zod-validation.pipe"
-import { PrismaServices } from "src/prisma/prisma.service"
-import { z } from "zod"
+} from '@nestjs/common'
+import { hash } from 'bcryptjs'
+import { ERROR_MESSAGES } from 'constants/error-message.constants'
+import { ZodValidationPipe } from '@/pipes/zod-validation.pipe'
+import { PrismaServices } from '@/prisma/prisma.service'
+import { z } from 'zod'
 
 const createAccountBodySchema = z.object({
   name: z.string(),
@@ -20,7 +20,7 @@ const createAccountBodySchema = z.object({
 
 type CreateAccountBodySchema = z.infer<typeof createAccountBodySchema>
 
-@Controller("/accounts")
+@Controller('/accounts')
 export class CreateAccountController {
   constructor(private prisma: PrismaServices) {}
 
