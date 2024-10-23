@@ -18,7 +18,8 @@
               "useTabs": false,
               "trailingComma": "none",
               "bracketSpacing": true,
-              "arrowParens": "always"
+              "arrowParens": "always",
+              "valid-jsdoc": "error"
             }
           ]
           
