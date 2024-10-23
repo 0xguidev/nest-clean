@@ -1,0 +1,26 @@
+{
+    "extends": "google",
+    "env": {
+        "node": true,
+        "es2022": true
+    },
+    "parserOptions": {
+        "ecmaVersion": 13,
+        "sourceType": "module"
+    },
+    "rules": {
+        "prettier/prettier": [
+            "error",
+            {
+              "singleQuote": true,
+              "semi": true,
+              "tabWidth": 2,
+              "useTabs": false,
+              "trailingComma": "none",
+              "bracketSpacing": true,
+              "arrowParens": "always"
+            }
+          ]
+          
+    }
+}
