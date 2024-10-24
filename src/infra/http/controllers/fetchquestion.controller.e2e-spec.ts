@@ -1,5 +1,4 @@
-
-import { PrismaServices } from '@/infra/prisma/prisma.service'
+import { PrismaServices } from '@/infra/http/databse/prisma/prisma.service'
 import { INestApplication } from '@nestjs/common'
 import { Test } from '@nestjs/testing'
 import { JwtService } from '@nestjs/jwt'
