@@ -57,7 +57,17 @@ export class PrismaQuestionsRepository implements QuestionsRepository {
     })
   }
 
-  async save(question: Question): Promise<void> {}
+  async save(question: Question): Promise<void> {
+    const data = PrismaQuestionMapper.toPrisma(question)
+
+    await this.prisma.question.update({
+      where: {
+        id: data.id
+      },
+      data,
+      
+    })
+  }
 
   delete(question: Question): Promise<void> {
     throw new Error('Method not implemented.')
