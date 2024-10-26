@@ -1,5 +1,5 @@
 import { AppModule } from '@/infra/app.module'
-import { PrismaServices } from '@/infra/http/databse/prisma/prisma.service'
+import { PrismaServices } from '@/infra/database/prisma/prisma.service'
 import { INestApplication } from '@nestjs/common'
 import { Test } from '@nestjs/testing'
 import { hash } from 'bcryptjs'
