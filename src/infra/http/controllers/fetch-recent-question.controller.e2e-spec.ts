@@ -3,16 +3,15 @@ import { Test } from '@nestjs/testing'
 import { JwtService } from '@nestjs/jwt'
 import request from 'supertest'
 import { AppModule } from '@/infra/app.module'
-import { StudentFactory } from 'test/factories/make-student'
 import { DatabaseModule } from '@/infra/database/database.module'
+import { StudentFactory } from 'test/factories/make-student'
 import { QuestionFactory } from 'test/factories/make-question'
-import { Slug } from '@/domain/forum/enterprise/entities/value-objects/slug'
 
-describe('get question by slug (E2E)', () => {
+describe('fetch recent question (E2E)', () => {
   let app: INestApplication
+  let jwt: JwtService
   let studentFactory: StudentFactory
   let questionFactory: QuestionFactory
-  let jwt: JwtService
 
   beforeAll(async () => {
     const modularRef = await Test.createTestingModule({
@@ -21,32 +20,40 @@ describe('get question by slug (E2E)', () => {
     }).compile()
 
     app = modularRef.createNestApplication()
-
-    studentFactory = modularRef.get(StudentFactory)
-    questionFactory = modularRef.get(QuestionFactory)
     jwt = modularRef.get(JwtService)
+    questionFactory = modularRef.get(QuestionFactory)
+    studentFactory = modularRef.get(StudentFactory)
 
     await app.init()
   })
 
-  test('[GET] /questions/:slug', async () => {
+  test('[GET] /questions', async () => {
     const user = await studentFactory.makePrismaStudent()
 
     const accessToken = jwt.sign({ sub: user.id.toString() })
 
-    await questionFactory.makePrismaQuestion({
-      authorId: user.id,
-      slug: Slug.create('Question-content-01'),
-    })
+    await Promise.all([
+      questionFactory.makePrismaQuestion({
+        authorId: user.id,
+        title: 'Question 01',
+      }),
+      questionFactory.makePrismaQuestion({
+        authorId: user.id,
+        title: 'Question 02',
+      }),
+    ])
 
     const response = await request(app.getHttpServer())
-      .get('/questions/Question-content-01')
+      .get('/questions')
       .set('Authorization', `Bearer ${accessToken}`)
       .send()
 
     expect(response.statusCode).toBe(200)
     expect(response.body).toEqual({
-      question: expect.objectContaining({ slug: 'Question-content-01' }),
+      questions: [
+        expect.objectContaining({ title: 'Question 02' }),
+        expect.objectContaining({ title: 'Question 01' }),
+      ],
     })
   })
 })
