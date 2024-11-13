@@ -45,7 +45,7 @@ Authorization: Bearer {{authToken}}
 
 ###
 
-# @name fetch-recent-question
+# @name get-question-by-lug
 GET {{baseurl}}/questions/nova-pergunta-3
 Content-Type: application/json
 Authorization: Bearer {{authToken}}

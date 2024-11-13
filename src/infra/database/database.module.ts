@@ -1,4 +1,4 @@
-import { forwardRef, Module } from '@nestjs/common'
+import { Module } from '@nestjs/common'
 import { PrismaServices } from './prisma/prisma.service'
 import { PrismaQuestionAttachmentsRepository } from './prisma/repositories/prisma-question-attachments-repositories'
 import { PrismaQuestionsRepository } from './prisma/repositories/prisma-questions-repositories'
