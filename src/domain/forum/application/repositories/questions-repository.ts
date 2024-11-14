@@ -9,3 +9,4 @@ export abstract class QuestionsRepository {
   abstract create(question: Question): Promise<void>
   abstract delete(question: Question): Promise<void>
 }
+
